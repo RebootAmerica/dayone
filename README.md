@@ -1,23 +1,20 @@
-# Tweets on a Globe!
+With gratitude based off of [http://joelgrus.com/2016/02/27/trump-tweets-on-a-globe-aka-fun-with-d3-socketio-and-the-twitter-api/ ] by Joel Grus.
 
-Real-time visualization of geotagged tweets about a given topic, using d3, socket.io, and the Twitter API.
+Real time visualization of geotagged tweets in response to this year's election results to track violence in the aftermath and find ways to help. 
 
-Read all the gory details at:
 
-http://joelgrus.com/2016/02/27/trump-tweets-on-a-globe-aka-fun-with-d3-socketio-and-the-twitter-api/
+###To get start:
 
-![tweets on a globe](https://raw.githubusercontent.com/joelgrus/twitter-globe/master/globe.gif)
-
-(Props to Mike Bostock's <a href = "http://bl.ocks.org/mbostock/4183330">World Tour</a>,
- from which I appropriated liberally.)
-
-Run it yourself with your favorite search phrase. First install the dependencies:
+```bash
+$ npm init
+```
 
 ```bash
 $ npm install
 ```
 
-then create a `credentials.js` that looks like
+the twitter API credentials.js is stored in the gitignore, so you will need to make your own that looks like this: 
+
 
 ```js
 module.exports = {
@@ -27,13 +24,11 @@ module.exports = {
   access_token_secret: "..."
 };
 ```
+ask @brittanyIRL for keys if you need them. 
 
-then start it running:
+To run the project locally on 'localhost:3000' 
 
 ```bash
-$ node twitter.js "search phrase goes here"
+$ node twitter.js
 ```
 
-and finally navigate your browser to `localhost:3000`.
-
-Put it up on a giant screen! It's strangely mesmerizing.
