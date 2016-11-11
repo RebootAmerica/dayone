@@ -24,8 +24,9 @@ http.listen(3000, function() {
   console.log('listening on 3000');
 });
 
+
 /**
- * Create a stupid EventEmitter so that we can decouple the Twitter listener
+ * Create an EventEmitter so that we can decouple the Twitter listener
  * and the socket.io socket.
  */
 var EventEmitter = require('events'),
@@ -68,7 +69,7 @@ var Twitter = require('twitter'),
     credentials = require('./credentials.js'),
     client = new Twitter(credentials);
 
-var query = process.argv[2] || 'trump';
+var query = "trump" && 'profiling' && "violence" && "assault";
 
 client.stream('statuses/filter', {track: query}, function(stream) {
   // Every time we receive a tweet...

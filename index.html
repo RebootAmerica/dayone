@@ -41,67 +41,107 @@ a {
 }
 
 </style>
-<a class="octocat" href="https://github.com/joelgrus/twitter-globe">
-  <img src="octocat.png">
-</a>
-<a class="twitter" href="https://twitter.com/joelgrus">@joelgrus</a>
+<body>
 <div class="title">
-  <h1>Tweets on a Globe</h1>
-  <p>Very shortly, tweets should start rendering on a globe.
-    If that doesn't happen, that probably means something is wrong
-    with the backend service.</p>
+  <h1>Day One: Reboot Safety</h1>
+  <p>Have patience, we're loading... </p>
 </div>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script src="//d3js.org/queue.v1.min.js"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+
 <script>
-var width = 960,
-    height = 960;
+// var width = 960,
+//     height = 960;
 
-var projection = d3.geo.orthographic()
-    .translate([width / 2, height / 2])
-    .scale(width / 2 - 20)
-    .clipAngle(90)
-    .precision(0.6);
+// var projection = d3.geo.orthographic()
+//     .translate([width / 2, height / 2])
+//     .scale(width / 2 - 20)
+//     .clipAngle(90)
+//     .precision(0.6);
 
-var canvas = d3.select("body").append("canvas")
-    .attr("width", width)
-    .attr("height", height);
+// var canvas = d3.select("body").append("canvas")
+//     .attr("width", width)
+//     .attr("height", height);
 
-var c = canvas.node().getContext("2d");
+// var c = canvas.node().getContext("2d");
+
+// var path = d3.geo.path()
+//     .projection(projection)
+//     .context(c);
+
+// var title = d3.select(".title");
+
+// queue()
+//     .defer(d3.json, "/world-110m.json")
+//     .defer(d3.tsv, "/world-country-names.tsv")
+//     .await(ready);
+
+// function ready(error, world, names) {
+//   if (error) throw error;
+
+//   var globe = {type: "Sphere"},
+//       land = topojson.feature(world, world.objects.land),
+//       countries = topojson.feature(world, world.objects.countries).features,
+//       borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
+
+//   countries = countries.filter(function(d) {
+//     return names.some(function(n) {
+//       if (d.id == n.id) return d.name = n.name;
+//     });
+//   }).sort(function(a, b) {
+//     return a.name.localeCompare(b.name);
+//   });
+queue()
+    .defer(d3.json, "/states.json");
+
+var width = 700,
+      height = 580;
+
+// var canvas = d3.select("body").append("canvas")
+//     .attr("width", width)
+//     .attr("height", height);
+
+// var c = canvas.node().getContext("2d");
+// 
+// var title = d3.select(".title");
+
+
+var svg = d3.select("title")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+var states = svg.append( "g");
+
+var albersProjection = d3.geo.albers()
+  .scale( 190000 )
+  .rotate( [71.057,0] )
+  .center( [0, 42.313] )
+  .translate( [width/2,height/2] );
 
 var path = d3.geo.path()
-    .projection(projection)
-    .context(c);
-
-var title = d3.select(".title");
-
-queue()
-    .defer(d3.json, "/world-110m.json")
-    .defer(d3.tsv, "/world-country-names.tsv")
-    .await(ready);
+    .projection( albersProjection );
 
 function ready(error, world, names) {
   if (error) throw error;
 
-  var globe = {type: "Sphere"},
-      land = topojson.feature(world, world.objects.land),
-      countries = topojson.feature(world, world.objects.countries).features,
-      borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
+states.selectAll( "path" )
+  .data( states.json )
+  .enter()
+  .append( "path" )
+  .attr( "fill", "#ccc" )
+  .attr( "d", path );
 
-  countries = countries.filter(function(d) {
-    return names.some(function(n) {
-      if (d.id == n.id) return d.name = n.name;
-    });
-  }).sort(function(a, b) {
-    return a.name.localeCompare(b.name);
-  });
+// }
+}
 
+// function ready(error, world, names) {
   // Open up a socket to the website.
   var socket = io({ "force new connection" : true });
 
-  // Yes, I know how ugly this is.
   function makeHTML(tweet) {
     return [
       '<div class="user">',
@@ -119,7 +159,7 @@ function ready(error, world, names) {
     d3.transition()
       .duration(1250)
       .each("start", function() {
-        title.html(makeHTML(tweet));
+        svg.html(makeHTML(tweet));
       })
       .tween("rotate", function() {
         var p = tweet.latLong,
@@ -141,7 +181,8 @@ function ready(error, world, names) {
         };
       });
   });
-}
 
 d3.select(self.frameElement).style("height", height + "px");
+
 </script>
+</body>

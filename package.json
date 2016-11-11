@@ -1,7 +1,7 @@
 {
-  "name": "twitter-globe",
+  "name": "day-one",
   "version": "1.0.0",
-  "description": "",
+  "description": "Real-time visualization of geotagged tweets about a given topic, using d3, socket.io, and the Twitter API.",
   "main": "globe.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +12,14 @@
     "express": "^4.13.4",
     "socket.io": "^1.4.5",
     "twitter": "^1.2.5"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelgrus/twitter-globe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joelgrus/twitter-globe/issues"
+  },
+  "homepage": "https://github.com/joelgrus/twitter-globe#readme"
 }
