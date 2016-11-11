@@ -69,8 +69,7 @@ var Twitter = require('twitter'),
     credentials = require('./credentials.js'),
     client = new Twitter(credentials);
 
-//store query here, right now it's just a few things 'narrowing' down results
-var query = "trump" && 'profiling' && "violence" && "assault";
+var query = "trump";
 
 client.stream('statuses/filter', {track: query}, function(stream) {
   // Every time we receive a tweet...
