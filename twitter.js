@@ -50,7 +50,6 @@ var tweetEmitter = new TweetEmitter();
 var io = require('socket.io')(http);
 
 tweetEmitter.on('tweet', function(tweet) {
-  console.log(tweet);
   io.emit('tweet', tweet);
 });
 
