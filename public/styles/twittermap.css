@@ -1,23 +1,24 @@
 path {
   stroke-linejoin: round;
+  stroke: rgba(255,255,255,0.9);
+  stroke-width: .7px;
 }
 .land-glow {
   fill-opacity: .2;
   filter: url(#blur);
 }
 .land-fill {
-  fill: #fff;
+  fill: rgba(0,0,0,0.1);
+  stroke: none;
 }
 .state-boundary {
   fill: none;
-  stroke: #777;
+  stroke: rgba(255,255,255,0.9);
   stroke-width: .70px;
 }
 .county-boundary {
   fill: none;
+  stroke: #FEC503;
+  stroke-width: .25px;
 }
-.land-fill,
-.county-boundary {
-  stroke: #777;
-  stroke-width: .35px;
-}
+

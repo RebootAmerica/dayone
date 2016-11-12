@@ -6,7 +6,7 @@ var projection = d3.geo.albersUsa()
     .scale(1285)
     .translate([width / 2, height / 2]);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#twitterMap").append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -17,7 +17,7 @@ var path = d3.geo.path()
 // Use canvas to draw tweets onto existing map??
 var c = svg.node();
 console.log(c);
-var title = d3.select("#twitterMap");
+var title = d3.select("#tweets");
 
 var defs = svg.append("defs");
 
