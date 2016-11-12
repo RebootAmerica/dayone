@@ -1,5 +1,8 @@
 // 1. create map of USA, borrowed from https://bl.ocks.org/mbostock
 // var twitterMap = d3.select("#twitterMap"); // a home for the map
+queue()
+    .defer(d3.json, "/world-110m.json")
+    .defer(d3.tsv, "/world-country-names.tsv");
 var width = 960,
     height = 600;
 var projection = d3.geo.albersUsa()
@@ -62,19 +65,23 @@ function makeHTML(tweet) {
   ].join('');
 }
 
+// Use canvas to draw tweets onto existing map??
+var c = svg.node();
+console.log(c);
+
 // 3. Show tweets on map
 socket.on('tweet', function(tweet) {
   d3.transition()
     .duration(1250)
     .each("start", function() {
       $("#tweet").html(makeHTML(tweet));
-    })
-    .tween("rotate", function() {
-      var p = tweet.latLong;
-          // r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
-      return function(tweet){
-        tweet.latLong
-      }
+    });
+    // .tween("rotate", function() {
+    //   var p = tweet.latLong;
+    //       // r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
+    //   return function(tweet){
+    //     tweet.latLong
+    //   }
       // return function(t) {
       //   // Rotate the earth so that the new point is front and center.
       //   projection.rotate(r(t));
@@ -90,6 +97,6 @@ socket.on('tweet', function(tweet) {
       //   var center = projection(p);
       //   defs.strokeStyle = "#000", defs.fillStyle = "#f00", defs.beginPath(), defs.arc(center[0], center[1], 5, 0, 2 * Math.PI, false), defs.lineWidth = 2, defs.fill(), defs.stroke();
       // };
-    });
+    // });
 });
 
