@@ -16,6 +16,10 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/usa', function(req, res){
+  res.sendFile('/usa.html');
+});
+
 // Serve static files in the public directory.
 app.use(express.static('public'));
 
@@ -69,7 +73,7 @@ var Twitter = require('twitter'),
     credentials = require('./credentials.js'),
     client = new Twitter(credentials);
 
-var query = "trump";
+var query = "trump" && "victim" && "racism";
 
 client.stream('statuses/filter', {track: query}, function(stream) {
   // Every time we receive a tweet...
