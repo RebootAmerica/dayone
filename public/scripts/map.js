@@ -1,3 +1,6 @@
+var tweetCount = 0;
+$("#tweetCount").text(tweetCount);
+
 // 1. create map of USA, borrowed from https://bl.ocks.org/mbostock
 // var twitterMap = d3.select("#twitterMap"); // a home for the map
 var width = 960,
@@ -80,7 +83,7 @@ function ready(error, world, names, us, topo) {
     .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
     .attr("cy", function (d) { return projection(d)[1]; })
     .attr("r", "8px")
-    .attr("fill", "red");
+    // .attr("fill", "red");
 
 
 
@@ -110,6 +113,8 @@ function ready(error, world, names, us, topo) {
       // .duration(1600)
       // .delay(6000)
       .each("start", function() {
+        tweetCount += 1;
+        $("#tweetCount").text(tweetCount);
         // create tweet
         $("#tweet").html(makeHTML(tweet));
         // create location dot
@@ -120,7 +125,7 @@ function ready(error, world, names, us, topo) {
         .attr("cx", coordinates[0])
         .attr("cy", coordinates[1])
         .attr("r", 5)
-        .style("fill", "lime");
+        .style("fill", "red");
       });
   });
 }; // end ready()

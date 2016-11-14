@@ -83,6 +83,9 @@ client.stream('statuses/filter', {track: query}, function(stream) {
     // ... that has the `place` field populated ...
     if (tweet.place) {
       if(tweet.place.country_code === "US"){
+      console.log("_______");
+      console.log(tweet);
+      console.log("_______");
       // ... extract only the fields needed by the client ...
         var tweetSmall = {
           id: tweet.id_str,
