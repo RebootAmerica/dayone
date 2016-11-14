@@ -82,7 +82,7 @@ function ready(error, world, names, us, topo) {
     .append("circle")
     .attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
     .attr("cy", function (d) { return projection(d)[1]; })
-    .attr("r", "8px")
+    .attr("r", "0px")
     // .attr("fill", "red");
 
 
