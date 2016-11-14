@@ -101,9 +101,23 @@ footer div {
 }
 
 .mapContainer {
-	margin: 3rem auto .5rem;
+	margin: 2rem auto .5rem;
 	/*height: calc(100% - 300px);*/
 }
+
+#tweet {
+	height: 30vh;
+	width: 60vw;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 10; bottom: 0; right: 0;
+}
+.user {
+	padding: auto 5rem;
+}
+
+/*placing tweet on center of map*/
+
 
 @media (max-width: 970px){
 	header {
@@ -126,5 +140,15 @@ footer div {
 	}
 	.mapContainer {
 		margin-top: 4rem;
+	}
+	#tweet {
+	  height: 40vh;
+	  width: 100vw;
+	  margin: auto;
+	  position: absolute;
+	  top: -20; left: 0; bottom: 0; right: 0;
+	}
+	.user {
+		padding-left: 5rem;
 	}
 }

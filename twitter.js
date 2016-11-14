@@ -72,23 +72,29 @@ var Twitter = require('twitter'),
     credentials = require('./credentials.js'),
     client = new Twitter(credentials);
 
-var query = "trump" && "victim" && "racism";
+var query = "trump" || "us" || "football";
+
+var tweetCount = 0; // +1 for each tweet
+
 
 client.stream('statuses/filter', {track: query}, function(stream) {
   // Every time we receive a tweet...
   stream.on('data', function(tweet) {
     // ... that has the `place` field populated ...
     if (tweet.place) {
+      if(tweet.place.country_code === "US"){
       // ... extract only the fields needed by the client ...
-      var tweetSmall = {
-        id: tweet.id_str,
-        user: tweet.user.screen_name,
-        text: tweet.text,
-        placeName: tweet.place.full_name,
-        latLong: average(tweet.place.bounding_box.coordinates),
-      }
+        var tweetSmall = {
+          id: tweet.id_str,
+          user: tweet.user.screen_name,
+          text: tweet.text,
+          placeName: tweet.place.full_name,
+          latLong: average(tweet.place.bounding_box.coordinates),
+        }
+        tweetCount += 1;
       // ... and notify the tweetEmitter.
-      tweetEmitter.emit('tweet', tweetSmall);
+        tweetEmitter.emit('tweet', tweetSmall);
+      }
     }
   });
 });
