@@ -70,7 +70,8 @@ var Twitter = require('twitter'),
     credentials = require('./credentials.js'),
     client = new Twitter(credentials);
 
-var query = "trump" || "us" || "football";
+// search terms, to be turned into groupings 
+var query = "trump" ||  "hate" || "bitch" || "nigger" || "muslim" || "racism" || "harassment" || "discrimination";
 
 var tweetCount = 0; // +1 for each tweet
 
