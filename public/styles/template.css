@@ -112,8 +112,11 @@ footer div {
   position: absolute;
   top: 0; left: 10; bottom: 0; right: 0;
 }
-.user {
+.tweetContainer {
 	padding: auto 5rem;
+}
+.tweetContent {
+	color: #FEC503;
 }
 svg {
 	margin-top: -2rem;

@@ -96,12 +96,10 @@ function ready(error, world, names, us, topo) {
   // TURN THIS INTO A TEMPLATE 
   function makeHTML(tweet) {
     return [
-      '<div class="user">',
-      '<a href="https://twitter.com/', tweet.user, '" target="_blank">', '@', tweet.user, '</a>',
+      '<div class="tweetContainer">',
       '<h1>', tweet.placeName, '</h1>',
-      '<div class="tweet">',
-      '<a href="https://twitter.com/', tweet.user, '/status/', tweet.id, '" target="_blank">',
-      tweet.text, '</a>', '</div>'
+      '<div class="tweetContent">',
+      tweet.text, '</div></div>'
     ].join('');
   }
 
