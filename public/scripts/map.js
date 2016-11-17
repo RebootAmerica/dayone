@@ -40,7 +40,6 @@ function ready(error, world, names, us, topo) {
   // points
   aa = [-122.490402, 37.786453];
   // bb = [-122.389809, 37.72728];
-  console.log(projection(aa));
 
   var defs = svg.append("defs");
 
