@@ -76,7 +76,7 @@ var client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 // search terms, to be turned into groupings 
-var query = "trump" &&  "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
+var query = "trump" && ("hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination");
 
 var tweetCount = 0; // +1 for each tweet
 
