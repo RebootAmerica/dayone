@@ -111,7 +111,6 @@ function ready(error, world, names, us, topo) {
       // .duration(1600)
       // .delay(6000)
       .each("start", function() {
-        console.log("tweet!", tweet);
         tweetCount += 1;
         $("#tweetCount").text(tweetCount);
         // create tweet

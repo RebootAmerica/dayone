@@ -68,14 +68,6 @@ function average(coordinates) {
 // Twitter api access and set up stream
 
 var Twitter = require('twitter');
-    // credentials = require('./credentials.js'),
-    // client = new Twitter(credentials);
-// var client = new Twitter({
-//   consumer_key: process.env.consumer_key,
-//   consumer_secret: process.env.consumer_secret,
-//   access_token_key: process.env.access_token_key,
-//   access_token_secret: process.env.access_token_secret
-// });
 
 var client = new Twitter({
   consumer_key: process.env.CONSUMER_KEY,
@@ -84,7 +76,7 @@ var client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 // search terms, to be turned into groupings 
-var query = "trump" ||  "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
+var query = "trump" &&  "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
 
 var tweetCount = 0; // +1 for each tweet
 
@@ -96,9 +88,9 @@ client.stream('statuses/filter', {track: query}, function(stream) {
     // ... that has the `place` field populated ...
     if (tweet.place) {
       if(tweet.place.country_code === "US"){
-      console.log("_______");
-      console.log(tweet);
-      console.log("_______");
+      // console.log("_______");
+      // console.log(tweet);
+      // console.log("_______");
       // ... extract only the fields needed by the client ...
         var tweetSmall = {
           id: tweet.id_str,
