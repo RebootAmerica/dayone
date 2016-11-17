@@ -1,12 +1,13 @@
 {
-  "name": "day-one",
+  "name": "visualizing pain",
   "version": "1.0.0",
-  "description": "Real-time visualization of geotagged tweets about a given topic, using d3, socket.io, and the Twitter API.",
-  "main": "globe.js",
+  "description": "Real time visualization of geotagged tweets in response to this year's election results to visualize pain and violence in the aftermath for americans all over the USA and find ways to help. Aggregating tweets in real time over a socket connection based on keywords that are typically associated with online harassment.",
+  "main": "twitter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node twitter.js"
   },
-  "author": "",
+  "author": "Reboot Safety",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.2",
@@ -17,10 +18,6 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joelgrus/twitter-globe.git"
-  },
-  "bugs": {
-    "url": "https://github.com/joelgrus/twitter-globe/issues"
-  },
-  "homepage": "https://github.com/joelgrus/twitter-globe#readme"
+    "url": "git+https://github.com/RebootSafety/dayone"
+  }
 }
