@@ -3,13 +3,14 @@
  * It opens a streaming connection to Twitter and retrieves the tweets. It
  * publishes all of the geotagged tweets to a Socket.io socket.
  */
-
+// require(.env);
 /**
  * EXPRESS BOILERPLATE GOES HERE
  */
 var express = require('express'),
     app = express(),
     http = require('http').Server(app);
+var Twit = require('twit');
 
 // Serve index.html at the root.
 app.get('/', function(req, res){
@@ -62,17 +63,30 @@ function average(coordinates) {
 
 // Twitter api access and set up stream
 
-var Twitter = require('twitter'),
-    credentials = require('./credentials.js'),
-    client = new Twitter(credentials);
+// var Twitter = require('twitter');
+    // credentials = require('./credentials.js'),
+    // client = new Twitter(credentials);
+// var client = new Twitter({
+//   consumer_key: process.env.consumer_key,
+//   consumer_secret: process.env.consumer_secret,
+//   access_token_key: process.env.access_token_key,
+//   access_token_secret: process.env.access_token_secret
+// });
 
+var twitter = new Twit({
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+  timeout_ms: 60*1000, 
+});
 // search terms, to be turned into groupings 
 var query = "trump" &&  "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
 
 var tweetCount = 0; // +1 for each tweet
 
 
-client.stream('statuses/filter', {track: query}, function(stream) {
+twitter.stream('statuses/filter', {track: query}, function(stream) {
   // Every time we receive a tweet...
   stream.on('data', function(tweet) {
     // ... that has the `place` field populated ...
