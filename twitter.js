@@ -14,7 +14,8 @@ var Twit = require('twit');
 
 // Serve index.html at the root.
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+  // res.sendFile(__dirname + '/index.html');
+  res.sendFile('index.html');
 });
 
 // Serve static files in the public directory.
@@ -77,8 +78,7 @@ var twitter = new Twit({
   consumer_key: process.env.CONSUMER_KEY,
   consumer_secret: process.env.CONSUMER_SECRET,
   access_token: process.env.ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
-  timeout_ms: 60*1000, 
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 // search terms, to be turned into groupings 
 var query = "trump" &&  "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
