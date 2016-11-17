@@ -90,6 +90,7 @@ var tweetCount = 0; // +1 for each tweet
 
 
 twitter.stream('statuses/filter', {track: query}, function(stream) {
+  console.log(stream);
   // Every time we receive a tweet...
   stream.on('data', function(tweet) {
     // ... that has the `place` field populated ...
@@ -111,5 +112,8 @@ twitter.stream('statuses/filter', {track: query}, function(stream) {
         tweetEmitter.emit('tweet', tweetSmall);
       }
     }
+  });
+  stream.on('error', function(tweet){
+    throw error;
   });
 });
