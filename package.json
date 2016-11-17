@@ -4,7 +4,8 @@
   "description": "Real time visualization of geotagged tweets in response to this year's election results to visualize pain and violence in the aftermath for americans all over the USA and find ways to help. Aggregating tweets in real time over a socket connection based on keywords that are typically associated with online harassment.",
   "main": "twitter.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node twitter.js"
   },
   "author": "Reboot Safety",
   "license": "ISC",
