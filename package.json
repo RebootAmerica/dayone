@@ -8,12 +8,16 @@
     "start": "node twitter.js"
   },
   "author": "Reboot Safety",
-  "license": "ISC",
+  "license": "GNU",
   "dependencies": {
     "ejs": "^2.5.2",
     "express": "^4.13.4",
     "socket.io": "^1.4.5",
     "twitter": "^1.2.5"
+  },
+  "engines": {
+    "node": "v4.3.0",
+    "npm": "2.14.12"
   },
   "devDependencies": {},
   "repository": {

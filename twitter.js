@@ -67,7 +67,7 @@ var Twitter = require('twitter'),
     client = new Twitter(credentials);
 
 // search terms, to be turned into groupings 
-var query = "trump" ||  "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
+var query = "trump" &&  "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
 
 var tweetCount = 0; // +1 for each tweet
 
@@ -78,9 +78,9 @@ client.stream('statuses/filter', {track: query}, function(stream) {
     // ... that has the `place` field populated ...
     if (tweet.place) {
       if(tweet.place.country_code === "US"){
-      // console.log("_______");
-      // console.log(tweet);
-      // console.log("_______");
+      console.log("_______");
+      console.log(tweet);
+      console.log("_______");
       // ... extract only the fields needed by the client ...
         var tweetSmall = {
           id: tweet.id_str,
