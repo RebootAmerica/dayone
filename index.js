@@ -67,7 +67,7 @@ function average(coordinates) {
 
 // Twitter api access and set up stream
 
-// var Twitter = require('twitter');
+var Twitter = require('twitter');
     // credentials = require('./credentials.js'),
     // client = new Twitter(credentials);
 // var client = new Twitter({
@@ -77,19 +77,19 @@ function average(coordinates) {
 //   access_token_secret: process.env.access_token_secret
 // });
 
-var twitter = new Twit({
+var client = new Twitter({
   consumer_key: process.env.CONSUMER_KEY,
   consumer_secret: process.env.CONSUMER_SECRET,
-  access_token: process.env.ACCESS_TOKEN_KEY,
+  access_token_key: process.env.ACCESS_TOKEN_KEY,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 // search terms, to be turned into groupings 
-var query = "trump" &&  "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
+var query = "trump" ||  "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
 
 var tweetCount = 0; // +1 for each tweet
 
 
-twitter.stream('statuses/filter', {track: query}, function(stream) {
+client.stream('statuses/filter', {track: query}, function(stream) {
   console.log(stream);
   // Every time we receive a tweet...
   stream.on('data', function(tweet) {
@@ -113,7 +113,5 @@ twitter.stream('statuses/filter', {track: query}, function(stream) {
       }
     }
   });
-  stream.on('error', function(tweet){
-    throw error;
-  });
+
 });
