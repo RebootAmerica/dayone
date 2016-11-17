@@ -16,10 +16,6 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/usa', function(req, res){
-  res.sendFile('/usa.html');
-});
-
 // Serve static files in the public directory.
 app.use(express.static('public'));
 
@@ -64,7 +60,7 @@ function average(coordinates) {
   return [lon / n, lat / n];
 }
 
-// Twitter stuff
+// Twitter api access and set up stream
 
 var Twitter = require('twitter'),
     credentials = require('./credentials.js'),
@@ -82,9 +78,9 @@ client.stream('statuses/filter', {track: query}, function(stream) {
     // ... that has the `place` field populated ...
     if (tweet.place) {
       if(tweet.place.country_code === "US"){
-      console.log("_______");
-      console.log(tweet);
-      console.log("_______");
+      // console.log("_______");
+      // console.log(tweet);
+      // console.log("_______");
       // ... extract only the fields needed by the client ...
         var tweetSmall = {
           id: tweet.id_str,
