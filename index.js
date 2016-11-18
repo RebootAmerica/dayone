@@ -76,12 +76,13 @@ var client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 // search terms, to be turned into groupings 
-var query = "trump" && ("hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination");
-
+// var query = "trump" || "hate" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination");
+// var query_political = "trump" || "hate" || "bannon";
+var query_slur = "trump" || "hate" || "bannon" || "bitch" || "nigger" || "fag" || "muslim" || "racism" || "harassment" || "discrimination";
 var tweetCount = 0; // +1 for each tweet
 
 
-client.stream('statuses/filter', {track: query}, function(stream) {
+client.stream('statuses/filter', {track: query_slur}, function(stream) {
   console.log(stream);
   // Every time we receive a tweet...
   stream.on('data', function(tweet) {

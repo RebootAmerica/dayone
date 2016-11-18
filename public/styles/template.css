@@ -125,6 +125,7 @@ svg {
 	display: flex;
 	justify-content: space-around;
 	align-items: flex-start;
+	flex-wrap: wrap;
 }
 .callToAction {
 	width: 30%;
@@ -197,4 +198,19 @@ svg {
 	svg {
 		margin-left: -2rem;
 	}
+	.callToAction {
+	width: 100%;
+	margin: 1rem auto .5rem;
+	text-align: center;
+	}
+	.ctaHeading {
+		align-items: center;
+	}
+	.callToAction a{
+		margin: 0 auto;
+	}
+	.ctaHeading h2{
+		text-align: center;
+	}
+
 }
